@@ -15,32 +15,22 @@ public class Pawn extends AbstractPiece {
 
     @Override
     public List<Move> getAllowedMoves(Coordinates from, Board board) {
+        //creates a list of allowed places the pawn can move to
         List<Move> allowedMoves = new ArrayList<>();
+        //the pawn can move one forward
         if (this.getColour() == PlayerColour.WHITE){
             allowedMoves.add(new Move(from, (new Coordinates(from.getRow() -1, from.getCol()))));
         }
         if (this.getColour() == PlayerColour.BLACK){
             allowedMoves.add(new Move(from, (new Coordinates(from.getRow() +1, from.getCol()))));
         }
+        //the pawn can move two forward if it has not moved yet
+        if(this.getColour() == PlayerColour.WHITE && from.getRow() == 6){
+            allowedMoves.add(new Move(from, (new Coordinates(from.getRow() -2, from.getCol()))));
+        }
+        if(this.getColour() == PlayerColour.BLACK && from.getRow() == 1){
+            allowedMoves.add(new Move(from, (new Coordinates(from.getRow() +2, from.getCol()))));
+        }
         return allowedMoves;
-    }
-
-
-
-
-
-    public void CanMovePawn(Coordinates to, Coordinates from){
-        //checks if it is an allowed move
-        //if it is one square, MovePawnOne, if two MovePawnTwo
-    }
-
-    public void MovePawnOne(Coordinates to, Coordinates from){
-        //moves the pawn to the correct place
-        //if the space was occupied by an enemy piece, remove it from the board
-    }
-
-    public void MovePawnTwo(Coordinates to, Coordinates from){
-        //moves the pawn to the correct place
-        //if the space was occupied by an enemy piece, remove it from the board
     }
 }
