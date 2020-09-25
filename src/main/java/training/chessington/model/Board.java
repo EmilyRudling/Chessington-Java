@@ -1,5 +1,4 @@
 package training.chessington.model;
-
 import training.chessington.model.pieces.*;
 
 public class Board {
